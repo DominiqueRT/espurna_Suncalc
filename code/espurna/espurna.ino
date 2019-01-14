@@ -67,13 +67,8 @@ void setup() {
     // Init Serial, SPIFFS and system check
     systemSetup();
 
-    // Init persistance
+    // Init persistance and terminal features
     settingsSetup();
-
-    // Init terminal features
-    #if TERMINAL_SUPPORT
-        terminalSetup();
-    #endif
 
     // Hostname & board name initialization
     if (getSetting("hostname").length() == 0) {
@@ -150,10 +145,13 @@ void setup() {
     #if NTP_SUPPORT
         ntpSetup();
     #endif
+    #if SUNCALC_SUPPORT
+        suncalcSetup();
+    #endif 
     #if I2C_SUPPORT
         i2cSetup();
     #endif
-    #if defined(ITEAD_SONOFF_RFBRIDGE) || RF_SUPPORT
+    #ifdef ITEAD_SONOFF_RFBRIDGE
         rfbSetup();
     #endif
     #if ALEXA_SUPPORT
@@ -170,6 +168,9 @@ void setup() {
     #endif
     #if RFM69_SUPPORT
         rfm69Setup();
+    #endif
+    #if RF_SUPPORT
+        rfSetup();
     #endif
     #if IR_SUPPORT
         irSetup();
