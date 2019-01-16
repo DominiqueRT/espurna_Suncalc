@@ -71,3 +71,8 @@
 #undef NTP_SUPPORT
 #define NTP_SUPPORT                 1           // Scheduler needs NTP
 #endif
+
+#if SUNCALC_SUPPORT
+#undef NTP_SUPPORT
+#define NTP_SUPPORT                 1           // SUNCALC needs NTP
+#endif

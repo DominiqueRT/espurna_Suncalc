@@ -135,6 +135,10 @@
                             <a href="#" class="pure-menu-link" data="panel-ntp">NTP</a>
                         </li>
 
+                        <li class="pure-menu-item module module-suncalc">
+                            <a href="#" class="pure-menu-link" data="panel-suncalc">SUNCALC</a>
+                        </li>
+
                         <!-- removeIf(!rfbridge) -->
                         <li class="pure-menu-item module module-rfb">
                             <a href="#" class="pure-menu-link" data="panel-rfb">RF</a>
@@ -310,6 +314,14 @@
                                     <div class="pure-u-1-2">Last update</div>
                                     <div class="pure-u-11-24"><span class="right" name="ago">?</span><span> seconds ago</span></div>
 
+                                    <div class="pure-u-1-2 module module-suncalc">Sunrise</div>
+                                    <div class="pure-u-11-24 module module-suncalc"><span class="right" name="sunrise">? </span></div>
+
+                                    <div class="pure-u-1-2 module module-suncalc">Solar Noon</div>
+                                    <div class="pure-u-11-24 module module-suncalc"><span class="right" name="solarNoon">? </span></div>
+
+                                    <div class="pure-u-1-2 module module-suncalc">Sunset</div>
+                                    <div class="pure-u-11-24 module module-suncalc"><span class="right" name="sunset">? </span></div>
                                 </div>
 
                             </fieldset>
@@ -984,6 +996,78 @@
                     </div>
                 </form>
 
+                <form id="form-suncalc" class="pure-form form-settings">
+                    <div class="panel" id="panel-suncalc">
+
+                        <div class="header">
+                            <h1>SUN CALCULATION</h1>
+                            <h2>Determine sunrise, sunset for your location.</h2>
+                        </div>
+
+                        <div class="page">
+
+                            <fieldset>
+                                <div class="pure-g">
+                                    <div class="pure-u-1 pure-u-md-1-3">
+                                        <label class="pure-u-1 pure-u-lg-1-4">Sunrise</label>
+                                        <input class="pure-u-1 pure-u-lg-1-4" name="sunrise" type="text" readonly />
+                                    </div>
+
+                                    <div class="pure-u-1 pure-u-md-1-3">
+                                            <label class="pure-u-1 pure-u-lg-1-4">Solar Noon</label>
+                                            <input class="pure-u-1 pure-u-lg-1-4" name="solarNoon" type="text" readonly />
+                                    </div>
+
+                                    <div class="pure-u-1 pure-u-md-1-3">
+                                        <label class="pure-u-1 pure-u-lg-1-4">Sunset</label>
+                                        <input class="pure-u-1 pure-u-lg-1-4" name="sunset" type="text" readonly />
+                                    </div>
+                                </div>
+
+                                <div class="pure-g">
+                                    <legend>Location setting</legend>
+                            
+                                    <div class="pure-u-1 pure-u-md-1-3">
+                                        <label class="pure-u-1 pure-u-lg-1-4">Latitude</label>
+                                        <input class="pure-u-1 pure-u-lg-1-4" name="suncalcLatitude" type="number" min="-90" step="0.000001" max="90" required/>
+                                    </div>
+                        
+                                    <div class="pure-u-1 pure-u-md-1-3">
+                                        <label class="pure-u-1 pure-u-lg-1-4">Longitude</label>
+                                        <input class="pure-u-1 pure-u-lg-1-4" name="suncalcLongitude" type="number" min="-180" step="0.000001" max="180" required/>
+                                    </div>
+
+                                    <div class="pure-u-1 pure-u-lg-1 hint">
+                                        This is the location for your place.<br />
+                                        You can get it using <a href="https://www.latlong.net/" target="_blank">https://www.latlong.net/</a>
+                                    </div>                                
+                                </div>
+
+                                <div class="pure-g">
+                                    <div class="pure-u-1 pure-u-lg-1-4"><label>Dawn and Dusk Type</label></div>
+                                    <select class="pure-u-1 pure-u-lg-1-4" name="suncalcDawnDuskType">
+                                        <option value="0">-</option>
+                                        <option value="1">Civil</option>
+                                        <option value="2">Nautical </option>
+                                        <option value="3">Astronomical </option>                                            
+                                    </select>
+
+                                    <div class="pure-u-1 pure-u-lg-1 hint">
+                                            Dawn occurs before sunrise, before the top of the Sun reaches the horizon.<br/>
+                                            Astronomical Dawn is the point at which it becomes possible to detect light in the sky, when the sun is 18° below the horizon.<br/>
+                                            Nautical Dawn occurs at 12° below the horizon, when it becomes possible to see the horizon properly and distinguish some objects.<br/>
+                                            Civil Dawn occurs when the sun is 6° below the horizon and there is enough light for activities to take place without artificial lighting.<br/>
+                                            Dusk occurs after sunset, once the top of the Sun has passed the horizon.<br/>
+                                            As with dawn there is astronomical dusk, nautical dusk and civil dusk, occurring at 18°, 12° and 6° below the horizon respectively.<br/>
+                                    </div>  
+                                </div>
+
+                            </fieldset>
+                        </div>
+
+                    </div>
+                </form>
+
                 <form id="form-domoticz" class="pure-form form-settings">
                     <div class="panel" id="panel-domoticz">
 
@@ -1501,18 +1585,33 @@
         </div>
 
         <div id="scheduleTemplate" class="template">
-
             <div class="pure-g">
-
-                <label class="pure-u-1 pure-u-lg-1-4">When time is</label>
+                <label class="pure-u-1 pure-u-lg-1-5">When time is</label>
                 <div class="pure-u-1-4 pure-u-lg-1-5">
                     <input class="pure-u-2-3" name="schHour" type="number" min="0" step="1" max="23" value="0" />
-                    <div class="pure-u-1-4 hint center">&nbsp;h</div>
+                    <div class="pure-u-1-3 hint center">&nbsp;h</div>
                 </div>
                 <div class="pure-u-1-4 pure-u-lg-1-5">
                     <input class="pure-u-2-3" name="schMinute" type="number" min="0" step="1" max="59" value="0" />
                     <div class="pure-u-1-4 hint center">&nbsp;m</div>
                 </div>
+                
+                <div class="pure-u-1-4 pure-u-lg-1-5">
+                    <select class="pure-u-2-3" name="schBA">
+                        <option value="0">Before</option>
+                        <option value="1">After</option>
+                    </select>
+                </div>
+
+                <div class="pure-u-1-4 pure-u-lg-1-5">
+                    <select class="pure-u-2-3" name="schReference">
+                        <option value="0">-</option>
+                        <option value="1">Sunrise</option>
+                        <option value="2">Solar Noon</option>
+                        <option value="3">Sunset</option>                                            
+                    </select>
+                </div>
+                <br/>
                 <div class="pure-u-0 pure-u-lg-1-3"></div>
 
                 <label class="pure-u-1 pure-u-lg-1-4">Use UTC time</label>

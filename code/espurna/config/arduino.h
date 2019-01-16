@@ -139,6 +139,7 @@
 //#define NETBIOS_SUPPORT        1  // Only with Arduino Core 2.4.0
 //#define NOFUSS_SUPPORT         1
 //#define NTP_SUPPORT            0
+//#define SUNCALC_SUPPORT        0
 //#define RFM69_SUPPORT          1
 //#define RF_SUPPORT             1
 //#define SCHEDULER_SUPPORT      0

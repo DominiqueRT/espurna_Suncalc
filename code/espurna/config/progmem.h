@@ -94,6 +94,9 @@ PROGMEM const char espurna_modules[] =
     #if NTP_SUPPORT
         "NTP "
     #endif
+    #if SUNCALC_SUPPORT
+        "SUNCALC "
+    #endif
     #if RFM69_SUPPORT
         "RFM69 "
     #endif

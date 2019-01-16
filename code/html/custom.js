@@ -244,7 +244,7 @@ function addValue(data, name, value) {
     // These fields will always be a list of values
     var is_group = [
         "ssid", "pass", "gw", "mask", "ip", "dns",
-        "schEnabled", "schSwitch","schAction","schType","schHour","schMinute","schWDs","schUTC",
+        "schEnabled", "schSwitch","schAction","schType","schHour","schMinute","schWDs","schUTC","schBA","schReference",
         "relayBoot", "relayPulse", "relayTime",
         "mqttGroup", "mqttGroupInv", "relayOnDisc",
         "dczRelayIdx", "dczMagnitude",
@@ -1483,6 +1483,21 @@ function processData(data) {
             return;
         }
 
+        if ("sunrise" === key ||
+            "solarNoon" === key ||
+            "sunset" === key 
+        ) {
+            if (value > 0)
+            {
+                var seconds = value % 60; value = parseInt(value / 60, 10);
+                var minutes = value % 60; value = parseInt(value / 60, 10);
+                var hours   = value % 24; value = parseInt(value / 24, 10);
+                value = zeroPad(hours, 2) + "h " + zeroPad(minutes, 2) + "m " + zeroPad(seconds, 2) + "s";
+            }            
+            else
+                value = "-";
+        }
+        
         if ("free_size" === key) {
             free_size = parseInt(value, 10);
         }

@@ -48,7 +48,8 @@
     #define SENSOR_SUPPORT          0
     #define THINGSPEAK_SUPPORT      0
     #define WEB_SUPPORT             0
-
+    #define SUNCALC_SUPPORT         0   
+	
     // Extra light-weight image
     //#define DEBUG_SERIAL_SUPPORT    0
     //#define DEBUG_TELNET_SUPPORT    0

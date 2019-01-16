@@ -1150,6 +1150,25 @@
 #endif
 
 // -----------------------------------------------------------------------------
+// SUNCALC
+// -----------------------------------------------------------------------------
+#ifndef SUNCALC_SUPPORT
+#define SUNCALC_SUPPORT              1              // Build with Sun calculation support by default
+#endif
+
+#ifndef SUNCALC_LATITUDE
+#define SUNCALC_LATITUDE             48.85828       // Default Latitude (Paris - Eiffel Tower)
+#endif
+
+#ifndef SUNCALC_LONGITUDE
+#define SUNCALC_LONGITUDE            2.294457       // Default Latitude (Paris - Eiffel Tower)
+#endif
+
+#ifndef SUNCALC_DAWN_DUSK_TYPE
+#define SUNCALC_DAWN_DUSK_TYPE       0              // Default dawn (on the horizon)
+#endif
+
+// -----------------------------------------------------------------------------
 // ALEXA
 // -----------------------------------------------------------------------------
 
