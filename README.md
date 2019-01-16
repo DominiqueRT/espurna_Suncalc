@@ -63,7 +63,8 @@ Since last November, Max Prokhorov (@mcspr) is also working actively with ESPurn
     * Change LED notification mode
     * Remote reset the board
     * Fully configurable in webUI (broker, user, password, QoS, keep alive time, retain flag, client ID)
-* **Scheduler** to automatically turn on, off or toggle any relay at a given time and day, also change light intensity for dimmers
+* **Suncalc** to compute sunrise / solar noon / sunset based on a location (latitude, longitude)     
+* **Scheduler** to automatically turn on, off or toggle any relay at a given time and day or to a time offset of solar event, also change light intensity for dimmers
 * **Alexa** integration using the [FauxmoESP Library](https://bitbucket.org/xoseperez/fauxmoesp)
 * [**Google Assistant**](http://tinkerman.cat/using-google-assistant-control-your-esp8266-devices/) integration using IFTTT and Webhooks (Google Home, Allo)
 * [**Domoticz**](https://domoticz.com/) integration via MQTT
